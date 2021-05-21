@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user Choice</title>
+</head>
+<body>
+  <form action="{{ url_for("do_user_choice") }}" method = "post">
+    <label for="choice">Select your choice</label>
+    <!--
+    <select id="choice" name="choice">
+      <option value="add">Add Data</option>
+      <option value="search">Search Data</option>
+      <option value="view">View Data</option>
+    </select>
+    <button type="submit">Submit</button>
+    <-->
+  <button type"submit" name="choice" value="add">Add Data</button>
+  <button type"submit" name="choice" value="search">Search Data</button>
+  <button type"submit" name="choice" value="view">View Data</button>
+  </form>
+</body>
+</html>

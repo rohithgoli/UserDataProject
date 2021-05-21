@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Search</title>
+</head>
+<body>
+	<form action = "{{ url_for('search_data') }}" method = 'post'>
+		<label for="column">Select column to search</label>
+		<select id="column" name="column">
+			<option value="Name">Name</option>
+			<option value="Age">Age</option>
+			<option value="Gender">Gender</option>
+			<option value="email">email</option>
+		</select>
+		</br>
+		<label for="searchValue">Enter text to search</label>
+		<input type="text" id="searchValue" name="searchValue"/>
+	</form>
+	<div id="resultContainer">
+
+	</div>
+	<script type="text/javascript">
+		let containerEl = document.getElementById('resultContainer');
+
+		function displayResult(data){
+			let {count, desiredResult} = data;
+
+			for (let eachItem of desiredResult) {
+				let {Name, Age, Gender, email} = eachItem;
+
+				let itemContainerEl = document.createElement("div");
+				containerEl.appendChild(itemContainerEl);
+
+				let nameEl = document.createElement("h1");
+				nameEl.textContent = Name;
+				itemContainerEl.appendChild(nameEl);
+			};
+
+		};
+
+		fetch('/search-data')
+		.then((response)=> {
+			return response.json();
+		}).then((jsonData)=>{
+			console.log("Data fetched is:");
+			console.log(jsonData.count);
+			console.log(jsonData.desiredResult);
+			displayResult(jsonData);
+		});
+
+	</script>
+</body>
+</html>

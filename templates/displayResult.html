@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+    <p>{{ result.count }} results found !!</p>
+    <table border="1">
+        <thead>
+            <tr>
+                {% for eachCol in colNames %}
+                <th>{{ eachCol }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for eachResult in result.desiredResult %}
+            <tr>
+                {% for eachCol in colNames %}
+                <td>{{ eachResult[eachCol] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+</body>
+</html>

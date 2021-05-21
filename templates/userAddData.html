@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Form</title>
+    </head>
+    <body>
+        <form action="{{url_for("add_data")}}" method="post">
+            <label for="name">Name</label>
+            <input class="form-field" type="text" id="name" name="Name"/>
+            <br/>
+            <label for="age">Age</label>
+            <input class="form-field" type="text" id="age" name="Age"/>
+            <br/>
+            <label for="gender">Gender</label>
+            <input class="form-field" type="text" id="gender" name="Gender"/>
+            <br/>
+            <label for="email">Email</label>
+            <input class="form-field" type="text" id="email" name="email"/>
+            <br/>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
