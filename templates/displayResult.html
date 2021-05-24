@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
+    <link ref="stylesheet" href="{{ url_for('static',filename='user.css') }}"/>
 </head>
 <body>
+  <div class="bg-container">
     <p>{{ result.count }} results found !!</p>
     <table border="1">
         <thead>
@@ -24,5 +26,6 @@
             {% endfor %}
         </tbody>
         </table>
+  </div>
 </body>
 </html>

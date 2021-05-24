@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>User Search</title>
+	<link ref="stylesheet" href="{{ url_for('static',filename='user.css') }}"/>
 </head>
 <body>
+  <div class="bg-container">
 	<form action = "{{ url_for('search_data') }}" method = 'post'>
 		<label for="column">Select column to search</label>
 		<select id="column" name="column">
@@ -20,35 +22,6 @@
 	<div id="resultContainer">
 
 	</div>
-	<script type="text/javascript">
-		let containerEl = document.getElementById('resultContainer');
-
-		function displayResult(data){
-			let {count, desiredResult} = data;
-
-			for (let eachItem of desiredResult) {
-				let {Name, Age, Gender, email} = eachItem;
-
-				let itemContainerEl = document.createElement("div");
-				containerEl.appendChild(itemContainerEl);
-
-				let nameEl = document.createElement("h1");
-				nameEl.textContent = Name;
-				itemContainerEl.appendChild(nameEl);
-			};
-
-		};
-
-		fetch('/search-data')
-		.then((response)=> {
-			return response.json();
-		}).then((jsonData)=>{
-			console.log("Data fetched is:");
-			console.log(jsonData.count);
-			console.log(jsonData.desiredResult);
-			displayResult(jsonData);
-		});
-
-	</script>
+  </div>
 </body>
 </html>

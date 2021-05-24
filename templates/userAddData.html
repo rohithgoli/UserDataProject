@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>User Form</title>
+        <link ref="stylesheet" href="{{ url_for('static',filename='user.css') }}"/>
     </head>
     <body>
+      <div class="bg-container">
         <form action="{{url_for("add_data")}}" method="post">
             <label for="name">Name</label>
             <input class="form-field" type="text" id="name" name="Name"/>
@@ -20,5 +22,6 @@
             <br/>
             <button type="submit">Submit</button>
         </form>
+      </div>
     </body>
 </html>

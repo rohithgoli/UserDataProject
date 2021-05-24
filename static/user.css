@@ -1,0 +1,13 @@
+*body {
+body-margin:0px;
+}
+
+.bg-container {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background-color:#66CDAA;
+    font-family:"Roboto";
+}
