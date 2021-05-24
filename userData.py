@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-import csv
+import sqlite3
 
 app = Flask(__name__)
 
@@ -33,15 +33,26 @@ def add_user_data():
 @app.route('/add-data', methods = ['POST','GET'])
 def add_data():
     if request.method == 'POST':
+      try:
         Name = request.form['Name']
         Age = request.form['Age']
         Gender = request.form['Gender']
         email = request.form['email']
-        with open('users.csv', 'a+', newline='') as csv_file:
-            fieldnames = ['Name', 'Age', 'Gender', 'email']
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writerow({'Name': Name, 'Age': Age, 'Gender': Gender, 'email': email})
-        return "Data submitted successfully!! :)"
+        with sqlite3.connect('users.db') as con:
+            cursor = con.cursor()
+            cursor.execute("INSERT INTO users(Name,Age,Gender,email)\
+                            VALUES (?,?,?,?)",(Name,Age,Gender,email))
+            con.commit()
+
+        msg = "Data Added successfully!! :)"
+
+      except:
+        con.rollback()
+        msg = ":( Error in Adding Data !!"
+
+      finally:
+          con.close()
+          return f"{msg}"
 
 # User Searching Data API
 
@@ -56,28 +67,40 @@ def display_no_results():
     return '<html><body><h1>No Results Found!!</h1></body></html>'
 
 
-@app.route('/search-data', methods=['POST', 'GET'])
+@app.route('/search-data', methods = ['POST', 'GET'])
 def search_data():
     if request.method == 'POST':
-        column = request.form['column']
-        searchValue = request.form['searchValue']
-        result_dict = {
+        try:
+            column = request.form['column']
+            searchValue = request.form['searchValue']
+            result_dict = {
             "desiredResult": [],
             "count": 0
-        }
+            }
 
-        with open('users.csv', 'r') as csv_file:
-            csv_reader = csv.DictReader(csv_file)
-            columnNames = csv_reader.fieldnames
-            for row in csv_reader:
-                if searchValue in row[column]:
-                    result_dict['desiredResult'].append(row)
+            with sqlite3.connect('users.db') as con:
+                con.row_factory = sqlite3.Row
+                cursor = con.cursor()
+                cursor.execute(f"SELECT * FROM users WHERE {column} LIKE '%{searchValue}%' ")
+                rows = cursor.fetchall()
+                for each_row in rows:
                     result_dict['count'] += 1
+                    user_dict = {}
+                    columnNames = each_row.keys()
+                    for key in columnNames:
+                        user_dict[key] = each_row[key]
+                    result_dict['desiredResult'].append(user_dict)
+
             if result_dict['count'] == 0:
                 return redirect(url_for('display_no_results'))
             else:
-                #return jsonify(result_dict)
-                return render_template('displayResult.html',result = result_dict, colNames = columnNames)
+                # return jsonify(result_dict)
+                return render_template('displayResult.html', result=result_dict, colNames=columnNames)
+        except:
+            con.rollback()
+        finally:
+            con.close()
+
 
 # Displaying User Data API
 
@@ -85,18 +108,29 @@ def search_data():
 @app.route('/display', methods = ['GET'])
 def display_data():
     if request.method == 'GET':
-        result_dict = {
-            'count':0,
-            'desiredResult':[]
-            }
-        with open('users.csv','r') as csv_file:
-            csv_reader = csv.DictReader(csv_file)
-            columnNames = csv_reader.fieldnames
-            for row in csv_reader:
-                result_dict['desiredResult'].append(row)
-                result_dict['count'] += 1
-        #return (jsonify(result_dict))
-        return render_template('displayResult.html',result = result_dict, colNames = columnNames)
+        try:
+            result_dict = {
+                'count':0,
+                'desiredResult':[]
+                }
+            with sqlite3.connect('users.db') as con:
+                con.row_factory = sqlite3.Row
+                cursor = con.cursor()
+                cursor.execute("SELECT * FROM users;")
+                rows = cursor.fetchall()
+
+                for row in rows:
+                    result_dict['count'] += 1
+                    user_dict = {}
+                    columnNames = row.keys()
+                    for key in columnNames:
+                        user_dict[key] = row[key]
+                    result_dict['desiredResult'].append(user_dict)
+            return render_template('displayResult.html', result=result_dict, colNames=columnNames)
+        except:
+            con.rollback()
+        finally:
+            con.close()
 
 
 if __name__ == '__main__':
