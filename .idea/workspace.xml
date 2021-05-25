@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a36feb2-ddb8-4917-86dc-2ce2096024cb" name="Default Changelist" comment="basic styling and created branch for sql">
+    <list default="true" id="6a36feb2-ddb8-4917-86dc-2ce2096024cb" name="Default Changelist" comment="added users.db modified for sqlite3 module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userData.py" beforeDir="false" afterPath="$PROJECT_DIR$/userData.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621835674257</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added users.db modified for sqlite3 module">
+      <created>1621861613910</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1621861613910</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +164,7 @@
     </ignored-roots>
     <MESSAGE value="Initial commit" />
     <MESSAGE value="basic styling and created branch for sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic styling and created branch for sql" />
+    <MESSAGE value="added users.db modified for sqlite3 module" />
+    <option name="LAST_COMMIT_MESSAGE" value="added users.db modified for sqlite3 module" />
   </component>
 </project>
