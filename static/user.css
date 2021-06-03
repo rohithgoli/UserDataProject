@@ -1,5 +1,6 @@
 *body {
-body-margin:0px;
+    box-sizing:border-box;
+    body-margin:0px;
 }
 
 .bg-container {
@@ -10,4 +11,37 @@ body-margin:0px;
     min-height:100vh;
     background-color:#66CDAA;
     font-family:"Roboto";
+}
+
+.form-field-container {
+    display:flex;
+    flex-direction:column;
+    margin:5px;
+}
+
+.form-field {
+    border:0px;
+    border-radius:4px;
+    padding:8px;
+    margin-top:4px;
+    outline: none;
+}
+
+.gender-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-btn {
+    margin:5px;
+    cursor:pointer;
+    outline:none;
+    padding:5px;
+    border:0px;
+    border-radius:8px;
+    width:80px;
+}
+
+.hide-container {
+    display:none;
 }

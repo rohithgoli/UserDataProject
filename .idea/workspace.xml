@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a36feb2-ddb8-4917-86dc-2ce2096024cb" name="Default Changelist" comment="created toSqlalchemy branch">
+    <list default="true" id="6a36feb2-ddb8-4917-86dc-2ce2096024cb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26-05-2021_14_17__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26-05-2021_14_17__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26-05-2021_14_24_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26-05-2021_14_24__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/createdb.py" beforeDir="false" afterPath="$PROJECT_DIR$/createdb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/displayResult.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/displayResult.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/userAddData.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/userAddData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/userSearchData.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/userSearchData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/users.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="csvToSql" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
