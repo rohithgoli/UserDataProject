@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
+    <link ref="stylesheet" href="{{ url_for('static',filename='user.css') }}"/>
 </head>
 <body>
-    <p>{{ result.count }} results found !!</p>
-    <table border="1">
-        <thead>
-            <tr>
-                {% for eachCol in colNames %}
-                <th>{{ eachCol }}</th>
+    <div class="bg-container">
+        <a href="{{ url_for('user_choice') }}">Go back to home page</a>
+        <p>{{ result.count }} results found !!</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    {% for eachCol in colNames %}
+                        <th>{{ eachCol }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for eachResult in result.desiredResult %}
+                <tr>
+                    {% for eachCol in colNames %}
+                        <td>{{ eachResult[eachCol] }}</td>
+                    {% endfor %}
+                </tr>
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for eachResult in result.desiredResult %}
-            <tr>
-                {% for eachCol in colNames %}
-                <td>{{ eachResult[eachCol] }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
+            </tbody>
         </table>
+    </div>
 </body>
 </html>

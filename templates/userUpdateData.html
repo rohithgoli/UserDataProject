@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Data</title>
+</head>
+<body>
+    <form action = "{{ url_for('update_data') }}" method = 'post'>
+		<label for="column">Select column to update</label>
+		<select id="column" name="column">
+			<option value="Name">Name</option>
+			<option value="Age">Age</option>
+			<option value="Gender">Gender</option>
+			<option value="email">email</option>
+		</select>
+		</br>
+		<label for="searchValue">Enter text to search</label>
+		<input type="text" id="searchValue" name="searchValue"/>
+        <br/>
+        <label for="newValue">Enter value to be inserted</label>
+        <input type="text" id="newValue" name="newValue" />
+	</form>
+</body>
+</html>

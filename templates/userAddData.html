@@ -3,22 +3,40 @@
     <head>
         <meta charset="UTF-8">
         <title>User Form</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='user.css') }}"/>
     </head>
     <body>
-        <form action="{{url_for("add_data")}}" method="post">
-            <label for="name">Name</label>
-            <input class="form-field" type="text" id="name" name="Name"/>
-            <br/>
-            <label for="age">Age</label>
-            <input class="form-field" type="text" id="age" name="Age"/>
-            <br/>
-            <label for="gender">Gender</label>
-            <input class="form-field" type="text" id="gender" name="Gender"/>
-            <br/>
-            <label for="email">Email</label>
-            <input class="form-field" type="text" id="email" name="email"/>
-            <br/>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="bg-container">
+            <form id="userDataForm" action="{{url_for('add_data')}}" method="post">
+                <div class="form-field-container">
+                    <label>Name</label>
+                    <input type="text" class="form-field" name="Name" required/>
+                </div>
+                <div class="form-field-container">
+                    <label>Age</label>
+                    <input class="form-field" type="number" min="10" max="120" name="Age" required/>
+                </div>
+                <div class="form-field-container">
+                    <label>Gender</label>
+                    <div class="gender-container">
+                        <div>
+                            <input class="form-field" type="radio" value="M" name="Gender" checked />
+                            <label>Male</label>
+                        </div>
+                        <div>
+                            <input class="form-field" type="radio" value="F" name="Gender" />
+                            <label>Female</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field-container">
+                    <label>Email</label>
+                    <input class="form-field" type="email" pattern="[a-z0-9._%+-]+@+(xyz|abc|pqr)+\.[a-z]{2,}$"
+                           title="Only @abc.com, @pqr.com, @xyz.com domains are accepted" name="email" required/>
+                </div>
+                <button type="submit" class="form-btn">Submit</button>
+            </form>
+            <a href="{{ url_for('user_choice') }}">Go back to home page</a>
+        </div>
     </body>
 </html>

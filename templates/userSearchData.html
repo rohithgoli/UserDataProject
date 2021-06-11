@@ -3,51 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>User Search</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='user.css') }}"/>
 </head>
 <body>
-	<form action = "{{ url_for('search_data') }}" method = 'post'>
-		<label for="column">Select column to search</label>
-		<select id="column" name="column">
-			<option value="Name">Name</option>
-			<option value="Age">Age</option>
-			<option value="Gender">Gender</option>
-			<option value="email">email</option>
-		</select>
-		</br>
-		<label for="searchValue">Enter text to search</label>
-		<input type="text" id="searchValue" name="searchValue"/>
-	</form>
-	<div id="resultContainer">
-
+	<div class="bg-container">
+		<form action = "{{ url_for('search_data') }}" method = 'post'>
+			<label for="column">Select column to search</label>
+			<select id="column" name="column">
+				<option value="Name" selected>Name</option>
+				<option value="Age">Age</option>
+				<option value="Gender">Gender</option>
+				<option value="email">email</option>
+			</select>
+			</br>
+			<div id="searchInputContainer">
+				<div id="searchColumnContainer">
+					<label for="searchValue">Enter text to search</label>
+					<input type="text" id="searchValue" name="searchValue"/>
+				</div>
+				<div id="searchGenderContainer" class="hide-container">
+                    <label>Gender</label>
+                    <div class="gender-container">
+                        <div>
+                            <input class="form-field" type="radio" value="M" name="genderSearchValue" />
+                            <label>Male</label>
+                        </div>
+                        <div>
+                            <input class="form-field" type="radio" value="F" name="genderSearchValue" />
+                            <label>Female</label>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<button type="submit" class="form-btn">Submit</button>
+		</form>
+		<a href="{{ url_for('user_choice') }}">Go back to home page</a>
 	</div>
-	<script type="text/javascript">
-		let containerEl = document.getElementById('resultContainer');
+	<script>
 
-		function displayResult(data){
-			let {count, desiredResult} = data;
+		let columnEl = document.getElementById("column");
 
-			for (let eachItem of desiredResult) {
-				let {Name, Age, Gender, email} = eachItem;
+		let searchColumnContainerEl = document.getElementById("searchColumnContainer");
+		let searchGenderContainerEl = document.getElementById("searchGenderContainer");
 
-				let itemContainerEl = document.createElement("div");
-				containerEl.appendChild(itemContainerEl);
-
-				let nameEl = document.createElement("h1");
-				nameEl.textContent = Name;
-				itemContainerEl.appendChild(nameEl);
-			};
-
-		};
-
-		fetch('/search-data')
-		.then((response)=> {
-			return response.json();
-		}).then((jsonData)=>{
-			console.log("Data fetched is:");
-			console.log(jsonData.count);
-			console.log(jsonData.desiredResult);
-			displayResult(jsonData);
-		});
+		columnEl.addEventListener("change", function(event) {
+			if (event.target.value === "Gender") {
+				if (searchGenderContainerEl.classList.contains('hide-container') === true) {
+					searchGenderContainerEl.classList.remove("hide-container");
+				}
+				if (searchColumnContainerEl.classList.contains('hide-container') === false) {
+					searchColumnContainerEl.classList.add("hide-container");
+				}
+			} else {
+				if (searchGenderContainerEl.classList.contains('hide-container') === false) {
+					searchGenderContainerEl.classList.add("hide-container");
+				}
+				if (searchColumnContainerEl.classList.contains('hide-container') === true) {
+					searchColumnContainerEl.classList.remove("hide-container");
+				}
+			}
+		})
 
 	</script>
 </body>
