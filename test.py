@@ -41,6 +41,8 @@ def do_user_choice():
             return redirect(url_for('search_user_data'))
         elif choice == 'view':
             return redirect(url_for('display_data'))
+        else:
+            return redirect(url_for('user_choice'))
     except():
         print("Sorry !! Exception occurred")
 
